@@ -1,10 +1,18 @@
 /* =========================
    0) Tokens & base reset
    ========================= */
-:root{
-  --text:#fff;
+/* default = dark */
+:root {
+  --text: #fff;
   --overlay: rgba(0,0,0,.35);
-  --border:#2a2a2a;
+  --line: rgba(255,255,255,.7);
+}
+
+/* only active while Player sets data-theme="light" on <html> */
+:root[data-theme="light"] {
+  --text: #111;
+  --overlay: rgba(255,255,255,.10);
+  --line: rgba(0,0,0,.7);
 }
 
 *{ box-sizing:border-box; }
@@ -26,6 +34,7 @@ body{
   overflow:hidden; /* full-screen canvas site */
   position:relative;
 }
+body::before { background: var(--overlay); }
 
 button, input, select, textarea {
   font: inherit;
@@ -81,7 +90,8 @@ h1{ margin:0 0 .25rem; font-size:20px; }
   display:block;
   margin:0 0 .2em 0;
   padding-left:5px;
-  font-size:16px; color:#fff;
+  font-size:16px; 
+  color:var(--text);
 }
 #playlist .track.active{ color:#111; }
 
@@ -140,11 +150,36 @@ h1{ margin:0 0 .25rem; font-size:20px; }
   border-radius: 0;
   outline: none;
 }
-.signup-form button{
-  background-color: rgb(230, 230, 230);
-  border: none;
+.signup-form input {
+  color: #000;
+  -webkit-text-fill-color: #000;
+  text-transform: none;
 }
-.signup-form button:disabled{ opacity:.6; cursor:default; }
+
+/* stronger placeholder + readable on busy bg */
+.signup-form input::placeholder {
+  color: rgba(0,0,0,.82);
+  opacity: 1;
+  font-weight: 600;
+  letter-spacing: .3px;
+  text-shadow: 0 1px 0 rgba(255,255,255,.35);
+}
+
+/* lock button label to black across mobile browsers */
+.signup-form button {
+  background: #fff !important;
+  color: #000 !important;
+  -webkit-text-fill-color: #000;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  color-scheme: only light; /* prevents iOS dark-mode auto theming */
+}
+.signup-form button:active {
+  background: #f4f4f4;
+  color: #000;
+  -webkit-text-fill-color: #000;
+}
 
 .signup-msg{ margin-top:10px; font-size:14px; opacity:.85; }
 

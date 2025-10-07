@@ -8,6 +8,7 @@ const TRACKS = [
   { title: 'The Machinist',         file: '/assets/tracks/mp3/the-machinist.mp3' },
   { title: 'Post Traumatic Season', file: '/assets/tracks/mp3/post-traumatic-season.mp3' },
   { title: 'Paris',                 file: '/assets/tracks/mp3/paris.mp3' },
+  { title: 'Game',                 file: '/assets/tracks/mp3/game.mp3' },
   { title: 'Zodiac',                unreleased: true },
   { title: 'I Love You',            unreleased: true },
 ]
