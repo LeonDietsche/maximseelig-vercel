@@ -4,13 +4,12 @@ import { initMaxim } from '../script'
 import '../index.css'
 
 const TRACKS = [
-  { title: 'La Vie Est Belle',      file: '/assets/tracks/mp3/la-vie-est-belle.mp3' },
-  { title: 'The Machinist',         file: '/assets/tracks/mp3/the-machinist.mp3' },
+  // { title: 'I Love You', file: '/assets/tracks/mp3/I-love-you.mp3' },
+  { title: 'The Machinist', file: '/assets/tracks/mp3/the-machinist.mp3' },
+  { title: 'La Vie Est Belle', file: '/assets/tracks/mp3/la-vie-est-belle.mp3' },
+  { title: 'Cheaper Than A Life', file: '/assets/tracks/mp3/cheaper-than-a-life.mp3' },
+  { title: 'Game', file: '/assets/tracks/mp3/game.mp3' },
   { title: 'Post Traumatic Season', file: '/assets/tracks/mp3/post-traumatic-season.mp3' },
-  { title: 'Paris',                 file: '/assets/tracks/mp3/paris.mp3' },
-  { title: 'Game',                 file: '/assets/tracks/mp3/game.mp3' },
-  { title: 'Zodiac',                unreleased: true },
-  { title: 'I Love You',            unreleased: true },
 ]
 
 export default function Player() {
@@ -34,7 +33,32 @@ export default function Player() {
     <>
       <div className="topbar">
         <Link to="/" className="subtle-link">
-          Subscribe
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 100 100"
+                style={{ verticalAlign: 'middle' }} // This must be an object, not a string
+              >
+                <line
+                  x1="10"
+                  y1="10"
+                  x2="90"
+                  y2="90"
+                  stroke="black"
+                  strokeWidth={0.533} // Use camelCase and numeric values when possible
+                  vectorEffect="non-scaling-stroke"
+                />
+                <line
+                  x1="90"
+                  y1="10"
+                  x2="10"
+                  y2="90"
+                  stroke="black"
+                  strokeWidth={0.533}
+                  vectorEffect="non-scaling-stroke"
+                />
+              </svg>
         </Link>
       </div>
 

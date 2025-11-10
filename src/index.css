@@ -1,42 +1,48 @@
 /* =========================
    0) Tokens & base reset
    ========================= */
-/* default = dark */
 :root {
-  --text: #fff;
-  --overlay: rgba(0,0,0,.35);
-  --line: rgba(255,255,255,.7);
+  --text: #ffffff;
 }
 
-/* only active while Player sets data-theme="light" on <html> */
-:root[data-theme="light"] {
-  --text: #111;
-  --overlay: rgba(255,255,255,.10);
-  --line: rgba(0,0,0,.7);
+* {
+  box-sizing: border-box;
 }
 
-*{ box-sizing:border-box; }
-html,body{
-  margin:0;
-  height:100%;
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.3em;
+  text-transform: uppercase;
+  /* Face.jpg comes from public/assets/Face.jpg */
+  background: url('/assets/thumbnail_002.mp4') no-repeat center center fixed;
+  background-size: cover;
 }
 
 /* Custom font (kept in src/assets/font or public/assets/font) */
-@font-face{
-  font-family:'HelveticaLightCondensed';
-  src:url('./assets/font/Helvetica Light Condensed.otf') format('opentype');
+@font-face {
+  font-family: 'HelveticaLightCondensed';
+  src: url('./assets/font/Helvetica Light Condensed.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-body{
-  color:var(--text);
+body {
+  color: var(--text);
   font-family: HelveticaLightCondensed, Arial, sans-serif;
   text-transform: uppercase;
-  overflow:hidden; /* full-screen canvas site */
-  position:relative;
+  overflow: hidden;
+  /* full-screen canvas site */
+  position: relative;
 }
-body::before { background: var(--overlay); }
 
-button, input, select, textarea {
+
+button,
+input,
+select,
+textarea {
   font: inherit;
   text-transform: inherit;
 }
@@ -44,146 +50,183 @@ button, input, select, textarea {
 /* =========================
    1) Full background image
    ========================= */
-html, body{
-  /* Face.jpg comes from public/assets/Face.jpg */
-  background: url('/assets/Face.jpg') no-repeat center center fixed;
-  background-size: cover;
-}
-body::before{
-  content:"";
-  position:fixed; inset:0;
-  background:var(--overlay);     /* readability over photo */
-  pointer-events:none;
-  z-index:0;
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  /* readability over photo */
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* =========================
    2) Typography helpers
    ========================= */
-a{ color:inherit; text-decoration:none; }
-h1{ margin:0 0 .25rem; font-size:20px; }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-
+h1 {
+  margin: 0px;
+  font-size: 16px;
+  font-weight: normal;
+}
 
 /* =========================
    3) Canvas & overlays
    ========================= */
-#canvas{
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  background:transparent;
-  z-index:1;
+#canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 1;
 }
 
 /* Playlist: only the text is clickable; area around it passes to canvas */
-#playlist{
-  position:absolute;
-  left:12px; top:50%;
-  transform:translateY(-50%);
-  width:max-content; height:auto;
-  z-index:2;
-  pointer-events:none;
-  text-align:left;
+#playlist {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: max-content;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+  text-align: left;
 }
-#playlist .track{
-  pointer-events:auto;
-  display:block;
-  margin:0 0 .2em 0;
-  padding-left:5px;
-  font-size:16px; 
-  color:var(--text);
+
+#playlist .track {
+  pointer-events: auto;
+  display: block;
+  margin: 0 0 .2em 0;
+  padding-left: 5px;
+  font-size: 16px;
+  color: var(--text);
 }
-#playlist .track.active{ color:#111; }
+
+#playlist .track.active {
+  color: #111;
+}
 
 /* Centered email overlay (inactivity) */
-#emailOverlay{
-  position:absolute;
-  top:50%; left:50%;                   /* ← add left:50% to truly center */
-  transform:translate(-50%, -50%);
-  font-size:16px; color:#fff;
-  text-align:center;
-  opacity:0; transition:opacity .5s ease;
-  pointer-events:none;
-  z-index:3;
+#emailOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* ← add left:50% to truly center */
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .5s ease;
+  pointer-events: none;
+  z-index: 3;
 }
-#emailOverlay a{ pointer-events:auto; }
+
+#emailOverlay a {
+  pointer-events: auto;
+}
 
 /* =========================
    4) Signup page layout
    ========================= */
-.page{ background:transparent; }
-.page-signup{
+.page {
+  background: transparent;
+}
+
+.page-signup {
   /* truly centered container, safe on mobile toolbars */
-  min-height:100dvh;
-  display:grid;
-  place-items:center;
-  padding:24px;
-}
-.signup-card{
-  width:min(520px, 92vw);
-  color: #000000;
-  padding:22px;
-}
-.signup-head{
-  display:flex; 
-  align-items:center;
-  color: #000000;
-  justify-content:space-between; 
-  gap:12px;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
 }
 
-.skip-link{
-  background:transparent; 
-  border:0; 
-  color:#000000; 
-  cursor:pointer; 
-  font-size:14px;
+.signup-card {
+  width: min(200px);
+  color: #000000;
 }
-.skip-link:hover{ color:#fff; }
 
-.signup-form{ display:flex; gap:10px; margin-top:12px; }
-.signup-form input{
-  flex:1;
+.signup-head {
+  display: flex;
+  align-items: center;
+  color: #000000;
+  justify-content: space-between;
+}
+
+.skip-link {
+  background: transparent;
+  padding:0;
+  border: 0;
+  color: #000000;
+  cursor: pointer;
+}
+
+.skip-link:hover {
+  color: #fff;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form input {
+  flex: 1;
   background-color: transparent;
   border: none;
   border-bottom: 0.533px solid #000;
   border-radius: 0;
   outline: none;
 }
-.signup-form input {
-  color: #000;
-  -webkit-text-fill-color: #000;
-  text-transform: none;
-}
 
 /* stronger placeholder + readable on busy bg */
 .signup-form input::placeholder {
-  color: rgba(0,0,0,.82);
+  color: rgb(125, 125, 125) !important;
   opacity: 1;
-  font-weight: 600;
-  letter-spacing: .3px;
-  text-shadow: 0 1px 0 rgba(255,255,255,.35);
 }
 
 /* lock button label to black across mobile browsers */
 .signup-form button {
   background: #fff !important;
-  color: #000 !important;
-  -webkit-text-fill-color: #000;
-  appearance: none;
-  -webkit-appearance: none;
   border: none;
-  color-scheme: only light; /* prevents iOS dark-mode auto theming */
+  margin-top: 1.3em;
+  padding-right: 6px;
+  padding-left: 6px;  
+  margin-left: -6px;
+  width: 80px;
+  height: 1.5em;
 }
+
 .signup-form button:active {
   background: #f4f4f4;
   color: #000;
   -webkit-text-fill-color: #000;
 }
 
-.signup-msg{ margin-top:10px; font-size:14px; opacity:.85; }
+.signup-msg {
+  margin-top: 1.3em;  
+  font-size: 16px;
+  opacity: .85;
+}
 
 /* Tiny link in player to reopen signup */
-.topbar{ position:fixed; top:10px; right:12px; z-index:3; }
-.subtle-link{ color:#bbb; font-size:13px; }
-.subtle-link:hover{ color:#fff; }
+.topbar {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  z-index: 3;
+}
+
+.subtle-link {
+  color: #bbb;
+}
+
+.subtle-link:hover {
+  color: #fff;
+}

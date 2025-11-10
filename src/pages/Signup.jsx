@@ -36,10 +36,39 @@ export default function Signup() {
 
   return (
     <div className="page page-signup">
+      <div className="topbar">
+          <button className="skip-link" onClick={onSkip} aria-label="Skip signup">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 100 100"
+                style={{ verticalAlign: 'middle' }} // This must be an object, not a string
+              >
+                <line
+                  x1="10"
+                  y1="10"
+                  x2="90"
+                  y2="90"
+                  stroke="black"
+                  strokeWidth={0.533} // Use camelCase and numeric values when possible
+                  vectorEffect="non-scaling-stroke"
+                />
+                <line
+                  x1="90"
+                  y1="10"
+                  x2="10"
+                  y2="90"
+                  stroke="black"
+                  strokeWidth={0.533}
+                  vectorEffect="non-scaling-stroke"
+                />
+              </svg>
+            </button>
+      </div>
       <div className="signup-card">
         <div className="signup-head">
           <h1>UNRELEASED MUSIC</h1>
-          <button className="skip-link" onClick={onSkip} aria-label="Skip signup">Skip →</button>
         </div>
         <form onSubmit={onSubmit} className="signup-form">
           <input
