@@ -36,6 +36,33 @@ export default function Signup() {
 
   return (
     <div className="page page-signup">
+       <div className="bg-video" aria-hidden="true">
+         <video
+        className="bg-video-el"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/assets/Face.jpg"
+      >
+        {/* Phones first (tweak the breakpoint if you like) */}
+        <source
+          src="/assets/thumbnail_mobile.mp4"
+          type="video/mp4"
+          media="(max-width: 768px)"
+        />
+        {/* Fallback / desktop */}
+        <source
+          src="/assets/thumbnail.mp4"
+          type="video/mp4"
+        />
+        {/* Optional webm versions if you have them:
+        <source src="/assets/thumbnail_mobile.webm" type="video/webm" media="(max-width: 768px)" />
+        <source src="/assets/thumbnail.webm" type="video/webm" />
+        */}
+        </video>
+      </div>
       <div className="topbar">
           <button className="skip-link" onClick={onSkip} aria-label="Skip signup">
               <svg
@@ -74,7 +101,7 @@ export default function Signup() {
           <input
             type="email"
             name="email"
-            placeholder="you@example.com"
+            placeholder="YOU@EXAMPLE.COM"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
