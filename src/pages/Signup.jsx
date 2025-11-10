@@ -44,7 +44,6 @@ export default function Signup() {
         loop
         playsInline
         preload="auto"
-        poster="/assets/Face.jpg"
       >
         {/* Phones first (tweak the breakpoint if you like) */}
         <source

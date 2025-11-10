@@ -48,6 +48,7 @@ button, input, select, textarea{
   inset: 0;
   z-index: 0;             /* behind the UI */
   pointer-events: none;
+  background: #000000;
 }
 
 .bg-video-el {
