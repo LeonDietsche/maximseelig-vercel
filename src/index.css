@@ -43,18 +43,38 @@ button, input, select, textarea{
    Optional background VIDEO
    Put <div class="bg-video"><video class="bg-video-el" .../></div>
    ========================= */
-.bg-video {
+/* Background container */
+.bg-visual{
   position: fixed;
   inset: 0;
-  z-index: 0;             /* behind the UI */
-  pointer-events: none;
-  background: #000000;
+  z-index: 0;              /* behind UI */
+  pointer-events: none;    /* don't block clicks */
 }
 
-.bg-video-el {
+/* Elements inside the background */
+.bg-video-el,
+.bg-image-el{
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Default: desktop shows video, image sits underneath as poster */
+.bg-video-el{ display: block; }
+.bg-image-el{ display: block; } /* keeps Face.jpg visible during load */
+
+/* Phones: ALWAYS use the phone WebP (hide video) */
+@media (max-width: 640px){
+  .bg-video-el{ display: none; }
+  .bg-image-el{ display: block; }
+}
+
+/* Respect reduced motion: never show video */
+@media (prefers-reduced-motion: reduce){
+  .bg-video-el{ display: none; }
+  .bg-image-el{ display: block; }
 }
 
 /* If you prefer a simple dark overlay on top of photo/video */

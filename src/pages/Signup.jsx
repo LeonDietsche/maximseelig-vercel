@@ -36,30 +36,36 @@ export default function Signup() {
 
   return (
     <div className="page page-signup">
-       <div className="bg-video" aria-hidden="true">
-         <video
-        className="bg-video-el"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-      >
-        {/* Phones first (tweak the breakpoint if you like) */}
-        <source
-          src="/assets/thumbnail_mobile.mp4"
-          type="video/mp4"
-          media="(max-width: 768px)"
-        />
-        {/* Fallback / desktop */}
-        <source
-          src="/assets/thumbnail.mp4"
-          type="video/mp4"
-        />
-        {/* Optional webm versions if you have them:
-        <source src="/assets/thumbnail_mobile.webm" type="video/webm" media="(max-width: 768px)" />
-        <source src="/assets/thumbnail.webm" type="video/webm" />
-        */}
+        <div className="bg-visual" aria-hidden="true">
+        {/* Phone / reduced-motion image (always shows on small screens) */}
+        <picture>
+          {/* if you later add a non-WebP fallback, add another <source> without type */}
+          <source
+            srcSet="/assets/thumbnail_phone_webp.webp"
+            type="image/webp"
+            media="(max-width: 640px)"
+          />
+          {/* default <img> – acts as poster + RM fallback */}
+          <img
+            className="bg-image-el"
+            src="/assets/Face.jpg"
+            alt=""
+            loading="eager"
+            decoding="async"
+          />
+        </picture>
+
+        {/* Desktop video (hidden on small screens via CSS) */}
+        <video
+          className="bg-video-el"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/assets/Face.jpg"
+        >
+          <source src="/assets/thumbnail.mp4" type="video/mp4" />
         </video>
       </div>
       <div className="topbar">
