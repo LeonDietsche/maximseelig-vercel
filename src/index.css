@@ -1,42 +1,51 @@
 /* =========================
    0) Tokens & base reset
    ========================= */
-:root{
-  --text:#ffffff;
+:root {
+  --text: #ffffff;
 }
 
-*{ box-sizing:border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html, body{
-  margin:0;
-  height:100%;
-  font-size:16px;
-  line-height:1.3em;
-  text-transform:uppercase;
-  background-size:cover; /* if you ever use a static image */
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.3em;
+  text-transform: uppercase;
+  background-size: cover;
+  /* if you ever use a static image */
 }
 
 /* =========================
    Font
    ========================= */
-@font-face{
-  font-family:'HelveticaLightCondensed';
-  src:url('./assets/font/Helvetica Light Condensed.otf') format('opentype');
-  font-weight:normal;
-  font-style:normal;
+@font-face {
+  font-family: 'HelveticaLightCondensed';
+  src: url('./assets/font/Helvetica Light Condensed.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-body{
-  color:var(--text);
-  font-family:HelveticaLightCondensed, Arial, sans-serif;
+body {
+  color: var(--text);
+  font-family: HelveticaLightCondensed, Arial, sans-serif;
   text-transform: uppercase;
-  overflow:hidden;   /* full-screen canvas site */
-  position:relative; /* to layer things if needed */
+  overflow: hidden;
+  /* full-screen canvas site */
+  position: relative;
+  /* to layer things if needed */
 }
 
-button, input, select, textarea{
-  font:inherit;
-  text-transform:inherit;
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  text-transform: inherit;
 }
 
 /* =========================
@@ -44,16 +53,18 @@ button, input, select, textarea{
    Put <div class="bg-video"><video class="bg-video-el" .../></div>
    ========================= */
 /* Background container */
-.bg-visual{
+.bg-visual {
   position: fixed;
   inset: 0;
-  z-index: 0;              /* behind UI */
-  pointer-events: none;    /* don't block clicks */
+  z-index: 0;
+  /* behind UI */
+  pointer-events: none;
+  /* don't block clicks */
 }
 
 /* Elements inside the background */
 .bg-video-el,
-.bg-image-el{
+.bg-image-el {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -62,28 +73,45 @@ button, input, select, textarea{
 }
 
 /* Default: desktop shows video, image sits underneath as poster */
-.bg-video-el{ display: block; }
-.bg-image-el{ display: block; } /* keeps Face.jpg visible during load */
+.bg-video-el {
+  display: block;
+}
+
+.bg-image-el {
+  display: block;
+}
+
+/* keeps Face.jpg visible during load */
 
 /* Phones: ALWAYS use the phone WebP (hide video) */
-@media (max-width: 640px){
-  .bg-video-el{ display: none; }
-  .bg-image-el{ display: block; }
+@media (max-width: 640px) {
+  .bg-video-el {
+    display: none;
+  }
+
+  .bg-image-el {
+    display: block;
+  }
 }
 
 /* Respect reduced motion: never show video */
-@media (prefers-reduced-motion: reduce){
-  .bg-video-el{ display: none; }
-  .bg-image-el{ display: block; }
+@media (prefers-reduced-motion: reduce) {
+  .bg-video-el {
+    display: none;
+  }
+
+  .bg-image-el {
+    display: block;
+  }
 }
 
 /* If you prefer a simple dark overlay on top of photo/video */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
   /* overlay disabled by default; enable if you need contrast */
   /* background: var(--overlay); */
 }
@@ -91,60 +119,87 @@ body::before{
 /* =========================
    2) Typography helpers
    ========================= */
-a{ color:inherit; text-decoration:none; }
-h1{ margin:0; font-size:16px; font-weight:normal; }
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: normal;
+  /* color: white; */
+}
 
 /* =========================
    3) Canvas & overlays
    ========================= */
-#canvas{
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  background:transparent;
-  z-index:1;
+#canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 1;
 }
 
 /* Playlist: only text is clickable; area around passes to canvas */
-#playlist{
-  position:absolute;
-  left:16px;
-  top:50%;
-  transform:translateY(-50%);
-  width:max-content; height:auto;
-  z-index:2;
-  pointer-events:none;
-  text-align:left;
+#playlist {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: max-content;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+  text-align: left;
 }
-#playlist .track{
-  pointer-events:auto;
-  display:block;
-  margin:0 0 .2em 0;
-  padding-left:5px;
-  font-size:16px;
-  color:var(--text);
+
+#playlist .track {
+  pointer-events: auto;
+  display: block;
+  margin: 0 0 .2em 0;
+  padding-left: 5px;
+  font-size: 16px;
+  color: var(--text);
 }
-#playlist .track.active{ color:#111; }
+
+#playlist .track.active {
+  color: #111;
+}
 
 /* Centered email overlay (inactivity) */
-#emailOverlay{
-  position:absolute;
-  top:50%; left:50%;
-  transform:translate(-50%, -50%);
-  font-size:16px; color:#fff; text-align:center;
-  opacity:0; transition:opacity .5s ease;
-  pointer-events:none;
-  z-index:3;
+#emailOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .5s ease;
+  pointer-events: none;
+  z-index: 3;
 }
-#emailOverlay a{ pointer-events:auto; }
+
+#emailOverlay a {
+  pointer-events: auto;
+}
 
 /* =========================
    4) Signup page layout
    ========================= */
-.page{ background:transparent; }
+.page {
+  background: transparent;
+}
 
 .page-signup {
-  position: relative;     /* create stacking context */
-  z-index: 1;             /* above the .bg-video (z-index:0) */
+  position: relative;
+  /* create stacking context */
+  z-index: 1;
+  /* above the .bg-video (z-index:0) */
   min-height: 100dvh;
   display: grid;
   place-items: center;
@@ -152,93 +207,109 @@ h1{ margin:0; font-size:16px; font-weight:normal; }
 }
 
 /* make sure the card itself also sits above, for safety */
-.signup-card { 
-  position: relative; 
-  z-index: 2; 
+.signup-card {
+  position: relative;
+  z-index: 2;
   width: min(220px, 220px);
   color: #000;
 }
 
-.signup-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  color:#000;
+.signup-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #000;
 }
 
-.skip-link{
-  background:transparent;
-  padding:0;
-  border:0;
-  color:#000;
-  cursor:pointer;
+.skip-link {
+  background: transparent;
+  padding: 0;
+  border: 0;
+  color: #000;
+  cursor: pointer;
 }
-.skip-link:hover{ color:#fff; }
 
-.signup-form{
-  display:flex;
-  flex-direction:column;
+.skip-link:hover {
+  color: #fff;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
 }
 
 
 /* input line style */
-.signup-form input{
-  flex:1;
-  background:transparent;
-  border:none;
-  border-bottom:0.533px solid #000;
-  border-radius:0;
-  outline:none;
-  color:rgb(125,125,125) !important;
-  -webkit-text-fill-color:rgb(125,125,125) !important;
-  text-transform:none;          /* email should not be uppercased */
+.signup-form input {
+  flex: 1;
+  background: transparent;
+  margin: 0;
+  border: none;
+  border-bottom: 0.533px solid #000;
+  border-radius: 0;
+  outline: none;
+  color: rgb(125, 125, 125) !important;
+  -webkit-text-fill-color: rgb(125, 125, 125) !important;
+  text-transform: none;
+  /* email should not be uppercased */
 }
 
 /* stronger placeholder + readable on busy bg */
-.signup-form input::placeholder{
-  color:rgb(125,125,125) !important;
-  opacity:1;
+.signup-form input::placeholder {
+  color: rgb(125, 125, 125) !important;
+  opacity: 1;
 }
 
 /* lock button label to black across mobile browsers */
-.signup-form button{
-  background:#fff !important;
-  color:#000 !important;
-  -webkit-text-fill-color:#000;
-  border:none;
-  margin-top:1.3em;
-  padding:0 6px;
-  width:80px;
-  height:1.5em;
-  appearance:none;
-  -webkit-appearance:none;
-  color-scheme:only light;
-}
-.signup-form button:active{
-  background:#f4f4f4;
-  color:#000;
-  -webkit-text-fill-color:#000;
+.signup-form button {
+  background: #fff !important;
+  color: #000 !important;
+  text-align: left;
+  -webkit-text-fill-color: #000;
+  border: none;
+  margin-top: 1.3em;
+  margin-left: -6px;
+  padding: 2px 6px;
+  width: 88px;
+  height: 1.3em;
+  appearance: none;
+  -webkit-appearance: none;
+  color-scheme: only light;
 }
 
-.signup-msg{
-  margin-top:1.3em;
-  font-size:16px;
-  opacity:.85;
+.signup-form button:active {
+  background: #f4f4f4;
+  color: #000;
+  -webkit-text-fill-color: #000;
+}
+
+.signup-msg {
+  margin-top: 1.3em;
+  font-size: 16px;
+  opacity: .85;
 }
 
 /* =========================
    5) Top/Bottom chrome
    ========================= */
-.topbar{
-  position:fixed;
-  top:5px; right:5px;
-  z-index:3;
-}
-.bottombar{
-  position:fixed;
-  bottom:5px; right:5px;
-  z-index:3;
+.topbar {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  z-index: 3;
 }
 
-.subtle-link{ color:#bbb; }
-.subtle-link:hover{ color:#fff; }
+.bottombar {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  z-index: 3;
+}
+
+.subtle-link {
+  color: #bbb;
+}
+
+.subtle-link:hover {
+  color: #fff;
+}

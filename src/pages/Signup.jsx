@@ -41,14 +41,14 @@ export default function Signup() {
         <picture>
           {/* if you later add a non-WebP fallback, add another <source> without type */}
           <source
-            srcSet="/assets/thumbnail_phone_webp.webp"
+            srcSet="/assets/ms_thumbnail_356 x 640.mp4"
             type="image/webp"
             media="(max-width: 640px)"
           />
           {/* default <img> – acts as poster + RM fallback */}
           <img
             className="bg-image-el"
-            src="/assets/Face.jpg"
+            src="/assets/ms_thumbnail_356 x 640.jpg"
             alt=""
             loading="eager"
             decoding="async"
@@ -63,9 +63,9 @@ export default function Signup() {
           loop
           playsInline
           preload="auto"
-          poster="/assets/Face.jpg"
+          poster="/assets/ms_thumbnail_640x356.jpg"
         >
-          <source src="/assets/thumbnail.mp4" type="video/mp4" />
+          <source src="/assets/ms_thumbnail_640x356.mp4" type="video/mp4" />
         </video>
       </div>
       {/* <div className="topbar">
@@ -100,7 +100,7 @@ export default function Signup() {
       </div> */}
       <div className="signup-card">
         <div className="signup-head">
-          <h1>UNRELEASED MUSIC</h1>
+          <h1>I LOVE YOU EP</h1>
         </div>
         <form onSubmit={onSubmit} className="signup-form">
           <input
@@ -112,7 +112,7 @@ export default function Signup() {
             required
           />
           <button type="submit" disabled={loading}>
-            {loading ? 'Sending…' : 'Subscribe'}
+            {loading ? 'Sending…' : 'Get Access'}
           </button>
         </form>
         {msg && <p className="signup-msg">{msg}</p>}
