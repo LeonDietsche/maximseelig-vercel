@@ -4,12 +4,11 @@ import { initMaxim } from '../script'
 import '../index.css'
 
 const TRACKS = [
-  // { title: 'I Love You', file: '/assets/tracks/mp3/I-love-you.mp3' },
-  { title: 'The Machinist', file: '/assets/tracks/mp3/the-machinist.mp3' },
-  { title: 'La Vie Est Belle', file: '/assets/tracks/mp3/la-vie-est-belle.mp3' },
-  { title: 'Cheaper Than A Life', file: '/assets/tracks/mp3/cheaper-than-a-life.mp3' },
-  { title: 'Game', file: '/assets/tracks/mp3/game.mp3' },
-  { title: 'Post Traumatic Season', file: '/assets/tracks/mp3/post-traumatic-season.mp3' },
+  { title: 'The Machinist', file: '/api/protected/track/the-machinist' },
+  { title: 'La Vie Est Belle', file: '/api/protected/track/la-vie-est-belle' },
+  { title: 'Cheaper Than A Life', file: '/api/protected/track/cheaper-than-a-life' },
+  { title: 'Game', file: '/api/protected/track/game' },
+  { title: 'Post Traumatic Season', file: '/api/protected/track/post-traumatic-season' },
 ]
 
 export default function Player() {
@@ -31,7 +30,7 @@ export default function Player() {
 
   return (
     <>
-      <div className="topbar">
+      {/* <div className="topbar">
         <Link to="/" className="subtle-link">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +59,7 @@ export default function Player() {
                 />
               </svg>
         </Link>
-      </div>
+      </div> */}
 
       <div id="playlist" ref={playlistRef} />
       <canvas id="canvas" ref={canvasRef} />

@@ -1,6 +1,11 @@
 {
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/(.*)", "destination": "/" }
-  ]
+    { "source": "/release", "destination": "/" },
+    { "source": "/release/(.*)", "destination": "/" }
+  ],
+  "functions": {
+    "api/protected/track/[slug].js": {
+      "includeFiles": "protected/tracks/mp3/**"
+    }
+  }
 }

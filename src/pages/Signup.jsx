@@ -22,7 +22,7 @@ export default function Signup() {
       }
       setMsg('Thanks! Check your inbox to confirm. You can listen now.')
       // optional: go straight to the player
-      navigate('/app')
+      navigate('/release')
     } catch (err) {
       setMsg(err.message || 'Something went wrong')
     } finally {
@@ -31,7 +31,7 @@ export default function Signup() {
   }
 
   function onSkip() {
-    navigate('/app')
+    navigate('/release')
   }
 
   return (
@@ -68,7 +68,7 @@ export default function Signup() {
           <source src="/assets/thumbnail.mp4" type="video/mp4" />
         </video>
       </div>
-      <div className="topbar">
+      {/* <div className="topbar">
           <button className="skip-link" onClick={onSkip} aria-label="Skip signup">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@ export default function Signup() {
                 />
               </svg>
             </button>
-      </div>
+      </div> */}
       <div className="signup-card">
         <div className="signup-head">
           <h1>UNRELEASED MUSIC</h1>
