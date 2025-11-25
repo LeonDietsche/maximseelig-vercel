@@ -140,7 +140,7 @@ export function initMaxim({
 
     const mid = canvas.height / 2
     const w = canvas.width / filteredData.length
-    ctx.strokeStyle = 'rgb (198, 198, 198)'
+    ctx.strokeStyle = 'rgb(198, 198, 198)'
     ctx.lineWidth = 1
     filteredData.forEach((v, i) => {
       const x = i * w
@@ -160,7 +160,7 @@ export function initMaxim({
     ctx.lineTo(px, canvas.height)
     ctx.stroke()
 
-    ctx.strokeStyle = 'rgb (198, 198, 198)'
+    ctx.strokeStyle = ')'
     ctx.lineWidth = 1
   }
 
