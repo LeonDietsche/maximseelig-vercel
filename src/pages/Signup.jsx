@@ -117,6 +117,16 @@ export default function Signup() {
         </form>
         {msg && <p className="signup-msg">{msg}</p>}
       </div>
+      <section className="sr-only">
+        <h1>Maxim Seelig — Unreleased Music & Newsletter</h1>
+        <p>Producer and artist. Listen to selected tracks and get release updates by email.</p>
+        <ul>
+          <li>La Vie Est Belle</li>
+          <li>The Machinist</li>
+          <li>Post Traumatic Season</li>
+          <li>Paris</li>
+        </ul>
+      </section>
     </div>
   )
 }
