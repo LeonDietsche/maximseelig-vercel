@@ -4,7 +4,7 @@ export function initMaxim({
   playlistEl,
   emailEl,
   tracks,
-  playheadColor = '#111',
+  playheadColor = '#FFFFFF',
   playheadWidth = 0.5,
 }) {
   if (!canvas || !playlistEl || !emailEl || !tracks?.length) return () => {}
@@ -133,14 +133,14 @@ export function initMaxim({
   const timeToX = t => (t / duration) * canvas.width
 
   function draw() {
-    ctx.fillStyle = '#111'
+    ctx.fillStyle = '#FFFFFF'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
     if (!filteredData.length) return
 
     const mid = canvas.height / 2
     const w = canvas.width / filteredData.length
-    ctx.strokeStyle = '#333'
+    ctx.strokeStyle = 'rgb (198, 198, 198)'
     ctx.lineWidth = 1
     filteredData.forEach((v, i) => {
       const x = i * w
@@ -160,7 +160,7 @@ export function initMaxim({
     ctx.lineTo(px, canvas.height)
     ctx.stroke()
 
-    ctx.strokeStyle = '#333'
+    ctx.strokeStyle = 'rgb (198, 198, 198)'
     ctx.lineWidth = 1
   }
 
