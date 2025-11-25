@@ -41,7 +41,7 @@ export default function Signup() {
         <picture>
           {/* if you later add a non-WebP fallback, add another <source> without type */}
           <source
-            srcSet="/assets/ms_thumbnail_356 x 640.mp4"
+            srcSet="/assets/ms_thumbnail_356 x 640.webp"
             type="image/webp"
             media="(max-width: 640px)"
           />
