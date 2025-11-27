@@ -6,6 +6,7 @@ const ROOT = process.cwd()
 
 // Map URL slugs -> repo file paths (NOT in /public)
 const FILES = {
+  'i-love-you':            'protected/tracks/mp3/i-love-you.mp3',
   'the-machinist':         'protected/tracks/mp3/the-machinist.mp3',
   'la-vie-est-belle':      'protected/tracks/mp3/la-vie-est-belle.mp3',
   'cheaper-than-a-life':   'protected/tracks/mp3/cheaper-than-a-life.mp3',

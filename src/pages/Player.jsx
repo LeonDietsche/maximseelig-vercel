@@ -4,6 +4,7 @@ import { initMaxim } from '../script'
 import '../index.css'
 
 const TRACKS = [
+  { title: 'I Love You', file: '/api/protected/track/i-love-you' },
   { title: 'The Machinist', file: '/api/protected/track/the-machinist' },
   { title: 'La Vie Est Belle', file: '/api/protected/track/la-vie-est-belle' },
   { title: 'Cheaper Than A Life', file: '/api/protected/track/cheaper-than-a-life' },
