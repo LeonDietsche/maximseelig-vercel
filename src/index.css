@@ -145,6 +145,7 @@ h1 {
 
 /* Playlist: only text is clickable; area around passes to canvas */
 #playlist {
+  display: none;
   position: absolute;
   left: 16px;
   top: 50%;
