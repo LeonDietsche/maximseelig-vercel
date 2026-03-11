@@ -39,16 +39,13 @@ export default function Signup() {
         <div className="bg-visual" aria-hidden="true">
         {/* Phone / reduced-motion image (always shows on small screens) */}
         <picture>
-          {/* if you later add a non-WebP fallback, add another <source> without type */}
           <source
-            srcSet="/assets/ms_thumbnail_356 x 640.webp"
-            type="image/webp"
+            srcSet="/assets/ms_thumbnail_mobile.jpg"
             media="(max-width: 640px)"
           />
-          {/* default <img> – acts as poster + RM fallback */}
           <img
             className="bg-image-el"
-            src="/assets/ms_thumbnail_356 x 640.jpg"
+            src="/assets/ms_thumbnail_desktop.jpg"
             alt=""
             loading="eager"
             decoding="async"
