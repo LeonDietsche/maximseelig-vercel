@@ -9,19 +9,22 @@ export default function Signup() {
 
   async function onSubmit(e) {
     e.preventDefault()
-    setLoading(true); setMsg('')
+    setLoading(true)
+    setMsg('')
+
     try {
       const r = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })
       })
+
       if (!r.ok) {
         const { error } = await r.json().catch(() => ({}))
         throw new Error(error || 'Could not subscribe')
       }
+
       setMsg('Thanks! Check your inbox to confirm. You can listen now.')
-      // optional: go straight to the player
       navigate('/release')
     } catch (err) {
       setMsg(err.message || 'Something went wrong')
@@ -36,8 +39,7 @@ export default function Signup() {
 
   return (
     <div className="page page-signup">
-        <div className="bg-visual" aria-hidden="true">
-        {/* Phone / reduced-motion image (always shows on small screens) */}
+      <div className="bg-visual" aria-hidden="true">
         <picture>
           <source
             srcSet="/assets/ms_thumbnail_mobile.jpg"
@@ -51,54 +53,44 @@ export default function Signup() {
             decoding="async"
           />
         </picture>
-
-        {/* Desktop video (hidden on small screens via CSS) */}
-        <video
-          className="bg-video-el"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster="/assets/ms_thumbnail_640x356.jpg"
-        >
-          <source src="/assets/ms_thumbnail_640x356.mp4" type="video/mp4" />
-        </video>
       </div>
+
       {/* <div className="topbar">
-          <button className="skip-link" onClick={onSkip} aria-label="Skip signup">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="1em"
-                height="1em"
-                viewBox="0 0 100 100"
-                style={{ verticalAlign: 'middle' }} // This must be an object, not a string
-              >
-                <line
-                  x1="10"
-                  y1="10"
-                  x2="90"
-                  y2="90"
-                  stroke="black"
-                  strokeWidth={0.533} // Use camelCase and numeric values when possible
-                  vectorEffect="non-scaling-stroke"
-                />
-                <line
-                  x1="90"
-                  y1="10"
-                  x2="10"
-                  y2="90"
-                  stroke="black"
-                  strokeWidth={0.533}
-                  vectorEffect="non-scaling-stroke"
-                />
-              </svg>
-            </button>
+        <button className="skip-link" onClick={onSkip} aria-label="Skip signup">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            viewBox="0 0 100 100"
+            style={{ verticalAlign: 'middle' }}
+          >
+            <line
+              x1="10"
+              y1="10"
+              x2="90"
+              y2="90"
+              stroke="black"
+              strokeWidth={0.533}
+              vectorEffect="non-scaling-stroke"
+            />
+            <line
+              x1="90"
+              y1="10"
+              x2="10"
+              y2="90"
+              stroke="black"
+              strokeWidth={0.533}
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
+        </button>
       </div> */}
+
       <div className="signup-card">
         <div className="signup-head">
           <h1>I LOVE YOU EP</h1>
         </div>
+
         <form onSubmit={onSubmit} className="signup-form">
           <input
             type="email"
@@ -112,8 +104,10 @@ export default function Signup() {
             {loading ? 'Sending…' : 'Get Access'}
           </button>
         </form>
+
         {msg && <p className="signup-msg">{msg}</p>}
       </div>
+
       <section className="sr-only">
         <h1>Maxim Seelig — Unreleased Music & Newsletter</h1>
         <p>Producer and artist. Listen to selected tracks and get release updates by email.</p>
