@@ -42,12 +42,12 @@ export default function Signup() {
       <div className="bg-visual" aria-hidden="true">
         <picture>
           <source
-            srcSet="/assets/ms_thumbnail_mobile.jpg"
+            srcSet="/assets/ms_thumbnail_mobile_255_241_220.jpg"
             media="(max-width: 640px)"
           />
           <img
             className="bg-image-el"
-            src="/assets/ms_thumbnail_desktop.jpg"
+            src="/assets/ms_thumbnail_desktop_255_241_220.jpg"
             alt=""
             loading="eager"
             decoding="async"
