@@ -4,7 +4,7 @@ export function initMaxim({
   playlistEl,
   emailEl,
   tracks,
-  playheadColor = '#fff',
+  playheadColor = '#111',
   playheadWidth = 0.5,
 }) {
   if (!canvas || !playlistEl || !emailEl || !tracks?.length) return () => {}
