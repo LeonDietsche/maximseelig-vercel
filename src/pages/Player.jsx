@@ -24,7 +24,7 @@ export default function Player() {
       playlistEl: playlistRef.current,
       emailEl: emailRef.current,
       tracks: TRACKS,
-      playheadColor: '#111',
+      playheadColor: '#fff',
       playheadWidth: 0.5,
     })
     return cleanup
