@@ -26,3 +26,4 @@ pnpm-debug.log*
 .vercel
 .env.local
 .env*.local
+public/assets/thumbnail_desktop_002.tif
