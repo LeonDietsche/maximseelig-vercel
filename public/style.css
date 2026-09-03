@@ -1,0 +1,353 @@
+:root {
+  /* Desktop typography */
+  --track-font-size: 14px;
+  --overlay-font-size: 14px;
+
+}
+
+@font-face {
+  font-family: 'HelveticaLightCondensed';
+  /* public/assets/font/Helvetica Light Condensed.otf */
+  src: url('/assets/font/Helvetica Light Condensed.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  background: #fff;
+  cursor: default;
+}
+
+/* ========================================
+   Playlist
+======================================== */
+
+#playlist {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  width: 80px;
+
+  padding: 0;
+  transform: translateY(-50%);
+}
+
+#playlist .track {
+  width: 100%;
+
+  margin-bottom: 0.2em;
+  padding-left: 5px;
+
+  color: #666;
+
+  font-family: 'HelveticaLightCondensed', sans-serif;
+  font-size: var(--track-font-size);
+  line-height: 1.2;
+  text-align: left;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+#playlist .track.active {
+  color: #fff;
+}
+
+/* ========================================
+   Playback time
+======================================== */
+
+#playtime {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  left: auto;
+  bottom: auto;
+  z-index: 2;
+
+  transform: translateY(-50%);
+
+  color: #666;
+
+  font-family: 'HelveticaLightCondensed', sans-serif;
+  font-size: var(--track-font-size);
+  line-height: 1.2;
+  white-space: nowrap;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ========================================
+   Waveform canvas
+======================================== */
+
+#canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+
+  background: #fff;
+  cursor: inherit;
+}
+
+/* Native directional cursor for scrubbing the waveform. */
+body.manual-slideshow.nav-right {
+  cursor: e-resize;
+}
+
+body.manual-slideshow.nav-left {
+  cursor: w-resize;
+}
+
+/* ========================================
+   Central playback controls / email
+======================================== */
+
+#emailOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+
+  display: grid;
+  place-items: center;
+
+  transform: translate(-50%, -50%);
+
+  color: #fff;
+
+  font-family: 'HelveticaLightCondensed', sans-serif;
+  font-size: var(--overlay-font-size);
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  opacity: 1;
+  transition: opacity 0.5s ease;
+
+  pointer-events: none;
+}
+
+#emailOverlay.is-hidden {
+  opacity: 0;
+}
+
+#transportControls,
+#emailLink {
+  grid-area: 1 / 1;
+  transition: opacity 0.35s ease;
+}
+
+#transportControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* All three controls share the same transparent click area. */
+.transport-button {
+  display: grid;
+  place-items: center;
+
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+
+  background: transparent;
+  color: #fff;
+
+  cursor: pointer;
+  pointer-events: auto;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.transport-button:hover {
+  opacity: 0.55;
+}
+
+.transport-button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 4px;
+}
+
+/* Play triangle */
+#listenPrompt .play-icon {
+  display: block;
+
+  width: 0;
+  height: 0;
+  margin-left: 3px;
+
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 13px solid #fff;
+}
+
+/* Previous / next symbols */
+.skip-icon {
+  position: relative;
+  display: block;
+
+  width: 16px;
+  height: 16px;
+}
+
+/* Previous: vertical bar + left-facing triangle */
+.skip-icon-previous::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 2px;
+  height: 16px;
+
+  background: #fff;
+}
+
+.skip-icon-previous::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 3px;
+
+  width: 0;
+  height: 0;
+
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 12px solid #fff;
+}
+
+/* Next: right-facing triangle + vertical bar */
+.skip-icon-next::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 3px;
+
+  width: 0;
+  height: 0;
+
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid #fff;
+}
+
+.skip-icon-next::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 2px;
+  height: 16px;
+
+  background: #fff;
+}
+
+#emailLink {
+  color: inherit;
+  text-decoration: none;
+
+  opacity: 0;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+#emailOverlay.is-playing #transportControls {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#emailOverlay.is-playing #emailLink {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ========================================
+   Mobile sizing
+======================================== */
+
+@media (max-width: 767px) {
+  :root {
+    --track-font-size: 14px;
+    --overlay-font-size: 14px;
+  }
+
+  #transportControls {
+    gap: 16px;
+  }
+
+  .transport-button {
+    width: 42px;
+    height: 42px;
+  }
+
+  #listenPrompt .play-icon {
+    border-top-width: 7px;
+    border-bottom-width: 7px;
+    border-left-width: 12px;
+  }
+
+  .skip-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .skip-icon-previous::before,
+  .skip-icon-next::after {
+    height: 14px;
+  }
+
+  .skip-icon-previous::after {
+    border-top-width: 7px;
+    border-bottom-width: 7px;
+    border-right-width: 10px;
+  }
+
+  .skip-icon-next::before {
+    border-top-width: 7px;
+    border-bottom-width: 7px;
+    border-left-width: 10px;
+  }
+}
+
+
+/* Touch devices do not use the custom pointer. */
+@media (pointer: coarse) {
+  #canvas {
+    cursor: default;
+  }
+}

@@ -1,42 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MAXIM SEELIG — LOST FOR WORDS</title>
-    <meta name="description" content="Official site of Maxim Seelig. Stream select unreleased tracks and subscribe for release updates, shows, and drops." />
-    
-     <!-- Canonical -->
-    <link rel="canonical" href="https://www.maximseelig.com/" />
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.maximseelig.com/" />
-    <meta property="og:title" content="MAXIM SEELIG — LOST FOR WORDS" />
-    <meta property="og:description" content="Listen to unreleased tracks and join the newsletter for upcoming releases." />
-     
-    <!-- Favicon / icons -->
-    <link rel="icon" href="/assets/400x400.jpg">
-    <link rel="preload" href="/assets/font/Helvetica Light Condensed.otf" as="font" type="font/otf" crossorigin>
+<head>
+  <meta charset="UTF-8" />
+  <!-- VIEWPORT META FOR MOBILE SCALING -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAXIM SEELIG</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="manual-slideshow nav-right">
+  <canvas id="canvas"></canvas>
+  <div id="playlist"></div>
+  <div id="playtime" role="timer" aria-label="Track playback time">0:00 / 0:00</div>
 
-    <script type="application/ld+json">
-    {
-    "@context":"https://schema.org",
-    "@type":"MusicGroup",
-    "name":"Maxim Seelig",
-    "url":"https://www.maximseelig.com/",
-    "sameAs": [
-      "https://www.instagram.com/maximseelig"
-    ],
-    "genre": ["Electronic","Alternative"],
-    "description":"Producer and artist. Unreleased tracks, newsletters, and updates.",
-    "memberOf": "Independent",
-    }
-    </script>
+  <div id="emailOverlay" aria-live="polite">
+    <div id="transportControls" role="group" aria-label="Playback controls">
+      <button id="previousTrack" class="transport-button track-navigation" type="button" aria-label="Previous track">
+        <span class="skip-icon skip-icon-previous" aria-hidden="true"></span>
+      </button>
 
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+      <button id="listenPrompt" class="transport-button" type="button" aria-label="Play music">
+        <span class="play-icon" aria-hidden="true"></span>
+      </button>
+
+      <button id="nextTrack" class="transport-button track-navigation" type="button" aria-label="Next track">
+        <span class="skip-icon skip-icon-next" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <a id="emailLink" href="mailto:contact@maximseelig.com">contact@maximseelig.com</a>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
 </html>
