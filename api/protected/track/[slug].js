@@ -6,13 +6,15 @@ const ROOT = process.cwd()
 
 // Map URL slugs -> repo file paths (NOT in /public)
 const FILES = {
-  // 'i-love-you':            'protected/tracks/mp3/i-love-you.mp3',
-  // 'the-machinist':         'protected/tracks/mp3/the-machinist.mp3',
-  // 'la-vie-est-belle':      'protected/tracks/mp3/la-vie-est-belle.mp3',
-  // 'cheaper-than-a-life':   'protected/tracks/mp3/cheaper-than-a-life.mp3',
-  // 'game':                  'protected/tracks/mp3/game.mp3',
-  // 'post-traumatic-season': 'protected/tracks/mp3/post-traumatic-season.mp3',
-  'lost-for-words': 'protected/tracks/mp3/lost-for-words.mp3',
+  'game':                  'protected/tracks/mp3/game.mp3',
+  'the-machinist':         'protected/tracks/mp3/the-machinist.mp3',
+  'hello':                 'protected/tracks/mp3/hello.mp3',
+  'la-vie-est-belle':      'protected/tracks/mp3/la-vie-est-belle.mp3',
+  'post-traumatic-season': 'protected/tracks/mp3/post-traumatic-season.mp3',
+  'lost-for-words':        'protected/tracks/mp3/lost-for-words.mp3',
+  // nicht freigegeben, liegen aber im Repo:
+  // 'i-love-you':          'protected/tracks/mp3/i-love-you.mp3',
+  // 'cheaper-than-a-life': 'protected/tracks/mp3/cheaper-than-a-life.mp3',
 }
 
 function requireSession(req, res) {

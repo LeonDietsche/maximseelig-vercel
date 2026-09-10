@@ -3,12 +3,11 @@ import { initMaxim } from '../script'
 import '../index.css'
 
 const TRACKS = [
-  // { title: 'I Love You', file: '/api/protected/track/i-love-you' },
-  // { title: 'The Machinist', file: '/api/protected/track/the-machinist' },
-  // { title: 'La Vie Est Belle', file: '/api/protected/track/la-vie-est-belle' },
-  // { title: 'Cheaper Than A Life', file: '/api/protected/track/cheaper-than-a-life' },
-  // { title: 'Game', file: '/api/protected/track/game' },
-  // { title: 'Post Traumatic Season', file: '/api/protected/track/post-traumatic-season' },
+  { title: 'Game', file: '/api/protected/track/game' },
+  { title: 'The Machinist', file: '/api/protected/track/the-machinist' },
+  { title: 'hello', file: '/api/protected/track/hello' },
+  { title: 'la vie est belle', file: '/api/protected/track/la-vie-est-belle' },
+  { title: 'Post Traumatic Season', file: '/api/protected/track/post-traumatic-season' },
   { title: 'Lost For Words', file: '/api/protected/track/lost-for-words' },
 ]
 
