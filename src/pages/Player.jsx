@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { initMaxim } from '../script'
 import '../index.css'
 
@@ -10,63 +9,83 @@ const TRACKS = [
   // { title: 'Cheaper Than A Life', file: '/api/protected/track/cheaper-than-a-life' },
   // { title: 'Game', file: '/api/protected/track/game' },
   // { title: 'Post Traumatic Season', file: '/api/protected/track/post-traumatic-season' },
-    { title: 'Lost For Words', file: '/api/protected/track/lost-for-words' },
+  { title: 'Lost For Words', file: '/api/protected/track/lost-for-words' },
 ]
 
 export default function Player() {
   const canvasRef = useRef(null)
   const playlistRef = useRef(null)
   const emailRef = useRef(null)
+  const playtimeRef = useRef(null)
+  const playRef = useRef(null)
+  const prevRef = useRef(null)
+  const nextRef = useRef(null)
 
   useEffect(() => {
+    // Enables the native directional (e-resize / w-resize) scrub cursor.
+    document.body.classList.add('manual-slideshow', 'nav-right')
+
     const cleanup = initMaxim({
       canvas: canvasRef.current,
       playlistEl: playlistRef.current,
       emailEl: emailRef.current,
       tracks: TRACKS,
-      playheadColor: '#fff',
-      playheadWidth: 0.5,
+      playtimeEl: playtimeRef.current,
+      playButtonEl: playRef.current,
+      prevButtonEl: prevRef.current,
+      nextButtonEl: nextRef.current,
     })
-    return cleanup
+
+    return () => {
+      cleanup()
+      document.body.classList.remove('manual-slideshow', 'nav-right', 'nav-left')
+    }
   }, [])
 
   return (
     <>
-      {/* <div className="topbar">
-        <Link to="/" className="subtle-link">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="1em"
-                height="1em"
-                viewBox="0 0 100 100"
-                style={{ verticalAlign: 'middle' }} // This must be an object, not a string
-              >
-                <line
-                  x1="10"
-                  y1="10"
-                  x2="90"
-                  y2="90"
-                  stroke="black"
-                  strokeWidth={0.533} // Use camelCase and numeric values when possible
-                  vectorEffect="non-scaling-stroke"
-                />
-                <line
-                  x1="90"
-                  y1="10"
-                  x2="10"
-                  y2="90"
-                  stroke="black"
-                  strokeWidth={0.533}
-                  vectorEffect="non-scaling-stroke"
-                />
-              </svg>
-        </Link>
-      </div> */}
-
-      <div id="playlist" ref={playlistRef} />
       <canvas id="canvas" ref={canvasRef} />
-      <div id="emailOverlay" ref={emailRef}>
-        <a href="mailto:contact@maximseelig.com">contact@maximseelig.com</a>
+      <div id="playlist" ref={playlistRef} />
+      <div id="playtime" ref={playtimeRef} role="timer" aria-label="Track playback time">
+        0:00 / 0:00
+      </div>
+
+      <div id="emailOverlay" ref={emailRef} aria-live="polite">
+        <div id="transportControls" role="group" aria-label="Playback controls">
+          <button
+            id="previousTrack"
+            ref={prevRef}
+            className="transport-button track-navigation"
+            type="button"
+            aria-label="Previous track"
+          >
+            <span className="skip-icon skip-icon-previous" aria-hidden="true" />
+          </button>
+
+          <button
+            id="listenPrompt"
+            ref={playRef}
+            className="transport-button"
+            type="button"
+            aria-label="Play music"
+          >
+            <span className="play-icon" aria-hidden="true" />
+          </button>
+
+          <button
+            id="nextTrack"
+            ref={nextRef}
+            className="transport-button track-navigation"
+            type="button"
+            aria-label="Next track"
+          >
+            <span className="skip-icon skip-icon-next" aria-hidden="true" />
+          </button>
+        </div>
+
+        <a id="emailLink" href="mailto:contact@maximseelig.com">
+          contact@maximseelig.com
+        </a>
       </div>
     </>
   )
