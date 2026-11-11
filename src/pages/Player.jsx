@@ -3,7 +3,7 @@ import { initMaxim } from '../script'
 import '../index.css'
 
 const TRACKS = [
-  { title: 'When Will It Be Enough', file: '/api/protected/track/when-will-it-be-enough' },
+  { title: 'When Will I Be Enough', file: '/api/protected/track/when-will-it-be-enough' },
 ]
 
 export default function Player() {

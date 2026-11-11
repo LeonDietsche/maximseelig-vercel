@@ -88,7 +88,7 @@ export default function Signup() {
 
       <div className="signup-card">
         <div className="signup-head">
-          <h1>LOST FOR WORDS</h1>
+          <h1>WHEN WILL I BE ENOUGH</h1>
         </div>
 
         <form onSubmit={onSubmit} className="signup-form">
