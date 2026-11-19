@@ -88,7 +88,7 @@ export default function Signup() {
 
       <div className="signup-card">
         <div className="signup-head">
-          <h1>WHEN WILL I BE ENOUGH</h1>
+          <h1>CLOUD</h1>
         </div>
 
         <form onSubmit={onSubmit} className="signup-form">

@@ -6,7 +6,7 @@ const ROOT = process.cwd()
 
 // Map URL slugs -> repo file paths (NOT in /public)
 const FILES = {
-  'when-will-it-be-enough': 'protected/tracks/mp3/when-will-it-be-enough.mp3',
+  'cloud': 'protected/tracks/mp3/cloud.mp3',
   // nicht freigegeben, liegen aber im Repo:
   // 'game':                  'protected/tracks/mp3/game.mp3',
   // 'the-machinist':         'protected/tracks/mp3/the-machinist.mp3',
