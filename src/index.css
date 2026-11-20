@@ -498,7 +498,7 @@ body.manual-slideshow.nav-left {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #000;
+  color: #fff;
 }
 
 .skip-link {
@@ -567,6 +567,7 @@ body.manual-slideshow.nav-left {
   margin-top: 1.3em;
   font-size: 16px;
   opacity: .85;
+  color: #fff;
 }
 
 /* accessible, crawlable content w/o affecting your layout */
